@@ -24,7 +24,7 @@ from astropy.table import Column
 from photutils.segmentation import make_source_mask
 import wget
 from astroquery.vizier import Vizier
-from stokesconversion import StokesConversion
+from .stokesconversion import StokesConversion
 from astropy.modeling import models, fitting
 from astropy.nddata import Cutout2D
 import pandas as pd

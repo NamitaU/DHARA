@@ -2,13 +2,13 @@ import os
 import fnmatch
 import natsort
 import pandas as pd
-from Biascombine import biasCombine
-from Stacking import classify_hwp_images as classHWP
-from Stacking import ShiftnStack
-from separation import imageCoord_eo
-from photometry import photometry
-from polarization import pol_calc
-from single_star_reduction import single_photometry
+from .Biascombine import biasCombine
+from .Stacking import classify_hwp_images as classHWP
+from .Stacking import ShiftnStack
+from .separation import imageCoord_eo
+from .photometry import photometry
+from .polarization import pol_calc
+from .single_star_reduction import single_photometry
 
 def reduction(
     datapath,
