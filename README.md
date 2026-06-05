@@ -30,7 +30,7 @@ To ensure reproducibility and maintain code integrity:
 
 ## 👤 Author
 
-- **Name:** Namita (and collaborators)  
+- **Name:** Namita Uppal 
 - **Affiliation:** Institute of Astrophysics, FORTH 
 - **Pipeline:** DHARA (Data Handling and Automated Reduction pipeline for AIMPOL)
 
