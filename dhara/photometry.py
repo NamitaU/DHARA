@@ -265,18 +265,4 @@ def photometry(img_list, img_coord_file, spath, mode): # mode: 'fixed aperture' 
             #np.savetxt(os.path.join(spath,'local_bkg_multiple_phot_oray_'+band+'_P'+str(i)+'_all.txt'), phot_tableO)#, header='id     Xcenter_pix     Ycenter_Pix     aperure_sum_1     RA     DEC     bkg_counts_ap1     Final_phot_ap1')
            #np.savetxt(os.path.join(spath,'local_bkg_multiple_phot_eray_'+band+'_P'+str(i)+'_all.txt'), phot_tableE)#, header='id     Xcenter_pix     Ycenter_Pix      aperture_sum_1     RA     DEC     bkg_Ecounts_ap1     Final_phot_ap1')
     return([phot_tableO, phot_tableE])
-'''   
-path = '/Volumes/namita1TB/PDF/ISM/open_clusters/Observations/2025NovAIMPOL/15Nov2025'
-datapath = path +'/NGC2355'
-biaspath = '/Volumes/namita1TB/PDF/ISM/open_clusters/Observations/2025NovAIMPOL/15Nov2025/Bias'
-spath = datapath+'/reducedR_30s'
-img_list = os.listdir(spath)
-img_list = natsort.natsorted(img_list)
-source_file = spath + '/image_coord.txt'
-Stacked = []
-for files in img_list:
-    if fnmatch.fnmatch(files, 'stacked*.fits'):
-        Stacked.append([files])
-phot = photometry(img_list = Stacked, img_coord_file =  source_file, spath = spath)
-#print(A)   
-'''   
+

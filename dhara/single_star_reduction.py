@@ -38,6 +38,14 @@ def cent(Image,x,y,h,k ):
     xs, ys = centroid_quadratic(sub)
     xp, yp = x-h+xs, y-k+ys
     return(xp,yp)
+
+def cent_2g(Image,x,y,h,k ):
+    x = int(round(x))
+    y = int(round(y))
+    sub = Image[y-k:y+k, x-h:x+h]
+    xs, ys = centroid_2dg(sub)
+    xp, yp = x-h+xs, y-k+ys
+    return(xp,yp)
     
 def Gauss2D(xy, x0, y0, s, A):                                 # 2D- gaussian fiting is better than ndimage_maximum_posiyion and Center_of_mass 
     x,y=xy
@@ -280,17 +288,3 @@ def single_photometry(img_list, spath, mode):
             save_phot_csv(phot_tableE, outE)
     return([phot_tableO, phot_tableE])
            
-'''
-path = '/Volumes/namita1TB/PDF/ISM/open_clusters/Observations/2025NovAIMPOL/15Nov2025'
-datapath = path +'/NGC2099'
-biaspath = '/Volumes/namita1TB/PDF/ISM/open_clusters/Observations/2025NovAIMPOL/15Nov2025/Bias'
-spath = datapath+'/reducedR_15s'
-img_list = os.listdir(spath)
-img_list = natsort.natsorted(img_list)
-img_coord_file = spath + '/image_coord.txt'
-Stacked = []
-for files in img_list:
-    if fnmatch.fnmatch(files, 'stacked*.fits'):
-        Stacked.append([files])   
-phot = photometry(Stacked, img_coord_file, spath, mode = 'pol curve of growth', field = 'crowded')
-'''

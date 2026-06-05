@@ -163,6 +163,8 @@ def pol_calc(photO, photE, spath, q_inst, sigma_q_inst, u_inst, sigma_u_inst, ps
     ref = pd.read_csv(os.path.join(spath, photO[0]))
     n = len(ref['RA'])
     radii = np.loadtxt(os.path.join(spath, "aperture_radii.txt"), comments = '#')
+    psi_inst = np.deg2rad(psi_inst) # instrumental shift in angle
+    sigma_psi_inst = np.deg2rad(sigma_psi_inst)
     Final_cat = []
     pol_1FWHM = []
     for i in range(n):
@@ -198,8 +200,6 @@ def pol_calc(photO, photE, spath, q_inst, sigma_q_inst, u_inst, sigma_u_inst, ps
             #------------------------------------
             #zero-offset in angle correction
             #------------------------------------
-            psi_inst = np.deg2rad(psi_inst) # instrumental shift in angle
-            sigma_psi_inst = np.deg2rad(sigma_psi_inst)
             C_full = np.zeros((3,3))
             C_full[0,0] = e_Q**2   # q,u covarianc
             C_full[1,1] = e_U**2
@@ -266,31 +266,4 @@ def pol_calc(photO, photE, spath, q_inst, sigma_q_inst, u_inst, sigma_u_inst, ps
     return(df)
     
         
-
-
-'''    
-path = '/Volumes/namita1TB/PDF/ISM/open_clusters/Observations/2025NovAIMPOL/15Nov2025'
-datapath = path +'/NGC2099'
-biaspath = '/Volumes/namita1TB/PDF/ISM/open_clusters/Observations/2025NovAIMPOL/15Nov2025/Bias'
-spath = datapath+'/reducedR_15s'
-img_list = os.listdir(spath)
-img_list = natsort.natsorted(img_list)
-photO = []
-img_list = os.listdir(spath)
-img_list = natsort.natsorted(img_list)
-for files in img_list:
-    if fnmatch.fnmatch(files, 'stacked_phot_Oray*'):
-        photO.append(files)
-
-photE = []
-for files in img_list:
-    if fnmatch.fnmatch(files, 'stacked_phot_Eray*'):
-        photE.append(files)
-
-pol_cat = pol_calc(photO, photE, spath, q_inst=0, sigma_q_inst=0, u_inst=0, sigma_u_inst=0, psi_inst=0, sigma_psi_inst=0, ang_map = [67.5, 45.0, 22.5, 0.0], mode='pol curve of growth', aperture_correction = False)
-
-'''
-
-
-
 

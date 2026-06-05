@@ -124,7 +124,7 @@ def imageCoord_eo(astrometry_image, limiting_mag, outpath, showplot = True, rece
     f = fits.open(astrometry_image)
     data =  f[0].data
     header = f[0].header
-    xdim,ydim = data.shape
+    ydim,xdim = data.shape
     fov, _, _ = get_fov(astrometry_image)
     vizier_cat  = 'I/355/gaiadr3'
     mean, median, sigma = sigma_clipped_stats(data)
@@ -252,10 +252,3 @@ def imageCoord_eo(astrometry_image, limiting_mag, outpath, showplot = True, rece
     F = os.path.join(outpath, 'image_coord.txt')
     np.savetxt(F, catalog, header = ' X_oray     Y_oray    X_eray     Y_eray     RA     DEC     Gmag')
     return(F)
-'''
-path = '/Volumes/namita1TB/PDF/ISM/open_clusters/Observations/2025NovAIMPOL/15Nov2025'
-datapath = path +'/NGC2355'
-biaspath = '/Volumes/namita1TB/PDF/ISM/open_clusters/Observations/2025NovAIMPOL/15Nov2025/Bias'
-spath = datapath+'/reducedR_30s'
-cat = imageCoord_eo(astrometry_image = spath +'/astrometry.fits', limiting_mag=15.5, outpath=spath, showplot = True, recenter = True )
-'''

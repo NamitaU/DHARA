@@ -324,25 +324,3 @@ def ShiftnStack(datapath, biaspath,  band, exposure ,  objects, method, ang_map,
         shifted.append(shifted_hwp) 
     return(stacked, shifted)
 
-'''
-path = '/Volumes/namita1TB/PDF/ISM/open_clusters/Observations/2025NovAIMPOL/15Nov2025'
-datapath = path +'/NGC2099'
-biaspath = '/Volumes/namita1TB/PDF/ISM/open_clusters/Observations/2025NovAIMPOL/15Nov2025/Bias'
-spath = datapath+'/reducedR_15s'
-#imgpath =path+'/Kronberger69'
-#bias_path = P+'/Nov08/Bias'
-#Flat_path = '/home/namita/Documents/Open_clusters/proposals/AIMPOL/data/Namita/flats/3mar'
-#cluster= 'NGC2355'
-#bands = 'r'
-#sexcommand = 'sextractor'
-#print(img_list)
-
-#bands = 'r'
-#hf = ['p0', 'p1', 'p2', 'p3']
-objects = classify_hwp_images(datapath, band='R', exposure = 15, hwp=['p0', 'p1', 'p2', 'p3'], ang_map=[67.5, 45, 22.5, 0])
-
-stacked, shifted = ShiftnStack(datapath, biaspath,  band = 'R', exposure =  15,  objects = objects, method = 'sum', ang_map = [67.5, 45, 22.5, 0], spath=spath)
-
-print(stacked)
-print(shifted)
-'''
