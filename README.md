@@ -39,7 +39,7 @@ To ensure reproducibility and maintain code integrity:
 
 The manuscript has been submitted to the Journal of Astronomy and Astrophysics (JoAA) and is currently under peer review process. 
 
-Please note that the code and documentation may be updated as revisions to the manuscript are completed. If you use this software, please cite the corresponding publication once it becomes available.
+Please note that the code and documentation may be updated as revisions to the manuscript are completed. If you use this pipeline, please cite the corresponding publication once it becomes available.
 
 
 
