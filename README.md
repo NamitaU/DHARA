@@ -26,9 +26,6 @@ DHARA has been tested with:
 - astroquery 0.4.6
 - pandas 1.5.3
 - astroalign 2.6.2
-- os
-- fnmatch
-- re
 
 ## How to run
 
