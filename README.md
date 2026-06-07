@@ -24,6 +24,11 @@ DHARA has been tested with:
 - photutils 1.5.0
 - natsort 8.0.0
 - astroquery 0.4.6
+- pandas 1.5.3
+- astroalign 2.6.2
+- os
+- fnmatch
+- re
 
 ## How to run
 
