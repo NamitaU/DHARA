@@ -12,9 +12,22 @@ config/config.py
 
 Change the parameters according to your requirements.
 
+## Pre-requisites
+
+DHARA has been tested with:
+
+- Python 3.10.0
+- numpy 1.26.4
+- scipy 1.15.3
+- matplotlib 3.5.0
+- astropy 6.1.7
+- photutils 1.5.0
+- natsort 8.0.0
+- astroquery 0.4.6
+
 ## How to run
 
-python run_DHARA.py
+python run_DHARA.py or pthon3 run_DHARA.py
 
 
 ##  Important Usage Guidelines
@@ -39,7 +52,8 @@ To ensure reproducibility and maintain code integrity:
 
 The manuscript has been submitted to the Journal of Astronomy and Astrophysics (JoAA) and is currently under peer review process. 
 
-Please note that the code and documentation may be updated as revisions to the manuscript are completed. If you use this pipeline, please cite the corresponding publication once it becomes available.
+Please note that the code and documentation may be updated as revisions to the manuscript are completed. If you use this pipeline, please cite the corresponding publication once it becomes available. This file will be updated with the citation information once the DOI is created.
+
 
 
 
