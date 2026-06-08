@@ -247,7 +247,7 @@ def single_photometry(img_list, spath, mode):
         FWHM= fwhm(ref_set_img, oox, ooy)
         R = 1.5*FWHM
         if mode == 'fixed aperture':
-            radii = R
+            radii = np.array([R]) 
         elif mode == 'pol curve of growth':
             radii = np.linspace(0.5*FWHM,1.5*FWHM,15)
         else:
