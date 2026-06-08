@@ -162,7 +162,7 @@ def pol_calc(photO, photE, spath, q_inst, sigma_q_inst, u_inst, sigma_u_inst, ps
     al = np.array(ang_map)
     ref = pd.read_csv(os.path.join(spath, photO[0]))
     n = len(ref['RA'])
-    radii = np.loadtxt(os.path.join(spath, "aperture_radii.txt"), comments = '#')
+    radii = np.atleast_1d(np.loadtxt(os.path.join(spath, "aperture_radii.txt"), comments="#"))
     psi_inst = np.deg2rad(psi_inst) # instrumental shift in angle
     sigma_psi_inst = np.deg2rad(sigma_psi_inst)
     Final_cat = []
