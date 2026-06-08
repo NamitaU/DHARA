@@ -34,37 +34,27 @@ def reduction(
     # -------------------------------------------------
     spath = os.path.join(datapath,f'reduced{band}_{exposure}s')
     os.makedirs(spath, exist_ok=True)
-
     print('\n===================================')
     print(' STARTING POLARIZATION PIPELINE ')
     print('===================================\n')
-
     # -------------------------------------------------
     # master bias
     # -------------------------------------------------
-
     print('Creating master bias')
-
     masterbias = biasCombine(biaspath, file_prefix='bias')
-
     # -------------------------------------------------
     # classify HWP images
     # -------------------------------------------------
-
     print('Classifying HWP images')
-
     objects = classHWP(datapath, 
     	band, 
     	exposure, 
     	hwp=hwp_identifier, 
     	ang_map=HWP_angle_map)
-
     # -------------------------------------------------
     # shifting and stacking
     # -------------------------------------------------
-
     print('Shifting and stacking images')
-
     stacked, shifted = ShiftnStack(datapath, 
     	biaspath, 
     	band, 
@@ -73,16 +63,12 @@ def reduction(
     	method=stacking_method, 
     	ang_map=HWP_angle_map, 
     	spath=spath)
-    	
-    	
     if(photometry_imglist == 'stacked'):
         phot_imglist = stacked
     elif(photometry_imglist == 'shifted'):
         phot_imglist = shifted
     else:
         raise ValueError("photometry_imglist must be either 'stacked' or 'shifted'")
-
-    
     if field == 'crowded':
         # -------------------------------------------------
         # source detection / eo matching
@@ -102,7 +88,6 @@ def reduction(
         # photometry
         # -------------------------------------------------
         # select the set of images (stacked or shifted)
-        
         print('Performing aperture photometry')
         phot = photometry(
         img_list=phot_imglist,
@@ -119,25 +104,19 @@ def reduction(
     else:
         raise ValueError(
             "field must be either 'crowded' or 'single star'")
-
     files = natsort.natsorted(os.listdir(spath))
-
-    photO = [
-        f for f in files
-        if fnmatch.fnmatch(f, photometry_imglist+'_phot_Oray*')
-    ]
-
-    photE = [
-        f for f in files
-        if fnmatch.fnmatch(f, photometry_imglist+'_phot_Eray*')
-    ]
-
+    sets = [f for f in files if fnmatch.fnmatch(f, photometry_imglist+'_phot_Oray_P0*.csv')]
+    n = len(sets)
+    photO = [[f for f in files
+        if fnmatch.fnmatch(f, f'{photometry_imglist}_*_Oray_P*{k}.csv')]
+        for k in range(n)]
+    photE = [[f for f in files
+        if fnmatch.fnmatch(f, f'{photometry_imglist}_*_Eray_P*{k}.csv')]
+        for k in range(n)]
     # -------------------------------------------------
     # polarization calculation
     # -------------------------------------------------
-
     print('Calculating polarization')
-
     pol_cat = pol_calc(
         photO,
         photE,
@@ -151,14 +130,9 @@ def reduction(
         HWP_angle_map,
         aperture_correction=aperture_correction
     )
-
-
-
-
     print('\n===================================')
     print(' PIPELINE COMPLETE ')
     print('===================================')
-
     print(f'\nFiles and polarization catalog are saved in:\n{spath}\n')
 
     return pol_cat
