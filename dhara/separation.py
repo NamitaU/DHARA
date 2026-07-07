@@ -150,7 +150,7 @@ def imageCoord_eo(astrometry_image, limiting_mag, outpath, showplot = True, rece
     plt.legend()
     plt.show()
     astro_sol = input("the astrometric solution is for which component (o or e)? ")   
-    np.savetxt(os.path.join(outpath,'Gaia_Gmag'+str(limiting_mag)+'.txt'), np.c_[Xo,Yo, RA, DEC, Gmag ], header='xeray      yeray     RA     DEC')
+    np.savetxt(os.path.join(outpath,'Gaia_Gmag'+str(limiting_mag)+'.txt'), np.c_[Xo,Yo, RA, DEC, Gmag ], header='xeray      yeray     RA     DEC     Gmag')
     #----------------------------------------------------------
     # Finding the image coordinates corresponding to both e-ray and o-ray images
     #-----------------------------------------------------------
