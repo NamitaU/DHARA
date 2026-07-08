@@ -266,6 +266,10 @@ def pol_calc(photO, photE, spath, q_inst, sigma_q_inst, u_inst, sigma_u_inst, ps
                 df.loc[idx, 'ePA']  = pol_1FWHM[idx,8]
                 # flag = 1 for the overlapping stars
                 df.loc[idx, 'overlapping_flag'] = 1
+            if(mode == 'pol curve of growth'):
+                OneFWHM_overlap = overlapping_stars(Xo, Yo, Xe, Ye, aper_rad)
+                for idx1 in OneFWHM_overlap:
+                    df.loc[idx1, 'overlapping_flag'] = 2
         df.to_csv(os.path.join(spath, f'pol_cat_s{si}.csv'),index=False)
         df['set']= si
         df_all.append(df)
