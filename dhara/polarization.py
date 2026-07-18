@@ -222,7 +222,13 @@ def pol_calc(photO, photE, spath, q_inst, sigma_q_inst, u_inst, sigma_u_inst, ps
                 # Polarization calculation 
                 #----------------------------------
                 converter = StokesConversion()
-                Pol, Pol_mas, ePol, PA, ePA = converter.convert(qt, ut, stokes_q_err=e_qt, stokes_u_err=e_ut, unit='deg' )  
+                try:
+                    Pol, Pol_mas, ePol, PA, ePA = converter.convert(qt, ut, stokes_q_err=e_qt, stokes_u_err=e_ut, unit='deg' ) 
+                except:
+                    Pol = np.sqrt(qt**2 + ut**2)
+                    ePol = np.sqrt( (qt**2*e_qt**2 + ut**2*e_ut**2)/ (qt**2 + ut**2) )
+                    PA = np.degrees(0.5*np.arctan2(ut, qt))
+                    ePA = np.degrees(np.sqrt( (qt**2*e_ut**2) + (ut**2*e_qt**2) )/(2*(qt**2+ut**2)))
                 phot_radii.append([radii[k],qt, e_qt, ut, e_ut, Pol*100, ePol*100, PA, ePA ])
             phot_radii = np.array(phot_radii)
             #plt.plot(phot_radii[:,0], phot_radii[:,5], 'r.-')
